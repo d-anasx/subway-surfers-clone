@@ -114,9 +114,8 @@ function GameUI() {
         <div className="absolute inset-0 bg-black/80 flex flex-col items-center justify-center text-white">
           <div className="text-center">
             <h1 className="text-6xl font-black mb-2 bg-gradient-to-r from-orange-400 via-yellow-400 to-green-400 bg-clip-text text-transparent">
-              SUBWAY RUNNER
+              SUBWAY SURFERS
             </h1>
-            <p className="text-xl text-gray-400 mb-8">3D Endless Runner</p>
           </div>
           
           <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 max-w-md w-full mx-4">
