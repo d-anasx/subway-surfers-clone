@@ -179,11 +179,35 @@ function ObstacleMesh({ obstacle }: { obstacle: Obstacle }) {
   }
   
   if (obstacle.type === 'barrier_low') {
+    // Render a low-barrier with filled borders (frame made of 4 solid boxes)
+    const [w, h, d] = [2.5, 1, 1];
+    const thickness = 0.12;
     return (
-      <mesh position={[x, 0.5, obstacle.z]} castShadow receiveShadow>
-        <boxGeometry args={[2.5, 1, 1]} />
-        <meshStandardMaterial color="#9B59B6" />
-      </mesh>
+      <group position={[x, 0.5, obstacle.z]} castShadow receiveShadow>
+        {/* Top bar */}
+        <mesh position={[0, h / 2 - thickness / 2, 0]}>
+          <boxGeometry args={[w, thickness, d]} />
+          <meshStandardMaterial color="#9B59B6" />
+        </mesh>
+
+        {/* Bottom bar */}
+        <mesh position={[0, -h / 2 + thickness / 2, 0]}>
+          <boxGeometry args={[w, thickness, d]} />
+          <meshStandardMaterial color="#9B59B6" />
+        </mesh>
+
+        {/* Left vertical bar */}
+        <mesh position={[-w / 2 + thickness / 2, 0, 0]}>
+          <boxGeometry args={[thickness, h - 2 * thickness, d]} />
+          <meshStandardMaterial color="#9B59B6" />
+        </mesh>
+
+        {/* Right vertical bar */}
+        <mesh position={[w / 2 - thickness / 2, 0, 0]}>
+          <boxGeometry args={[thickness, h - 2 * thickness, d]} />
+          <meshStandardMaterial color="#9B59B6" />
+        </mesh>
+      </group>
     );
   }
   
