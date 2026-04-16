@@ -28,7 +28,16 @@ export function Obstacles() {
   const [obstacles, setObstacles] = useState<Obstacle[]>([]);
   const [coins, setCoins] = useState<Coin[]>([]);
   const idCounter = useRef(0);
-  
+
+  // Clear all spawned objects when returning to the menu/reset state
+  useEffect(() => {
+    if (gameState === 'menu') {
+      setObstacles([]);
+      setCoins([]);
+      idCounter.current = 0;
+    }
+  }, [gameState]);
+
   // Spawn obstacles
   useEffect(() => {
     if (gameState !== 'playing') return;
